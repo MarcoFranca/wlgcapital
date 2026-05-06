@@ -7,7 +7,6 @@ import { motion, useReducedMotion, type Variants } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Section } from "./Section";
 import { BookOpen, ShieldCheck, CheckCircle2 } from "lucide-react";
-import { SectionFX } from "@/components/marketing/SectionFX";
 import { cn } from "@/lib/utils";
 
 export function GuideCTA() {
@@ -37,11 +36,11 @@ export function GuideCTA() {
     };
 
     const waHref = useMemo(() => {
-        const phone = process.env.NEXT_PUBLIC_WA_PHONE ?? "5511999999999";
+        const phone = process.env.NEXT_PUBLIC_WA_PHONE ?? "5521969639576";
         const wa = new URL(`https://wa.me/${phone}`);
         wa.searchParams.set(
             "text",
-            "Olá! Quero receber o Guia Estratégico do Consórcio e tirar dúvidas sobre o meu plano."
+            "Olá! Quero receber o Guia Estratégico do Consórcio da WLG Capital e tirar dúvidas sobre meu plano."
         );
         wa.searchParams.set("utm_source", "lp_home");
         wa.searchParams.set("utm_medium", "cta_guide");
@@ -49,56 +48,23 @@ export function GuideCTA() {
     }, []);
 
     return (
-        <Section id="guia" aria-labelledby="guide-title" className="relative isolate py-28 md:py-32">
-            {/* Costura superior: LIGHT vs DARK */}
+        <Section
+            id="guia"
+            aria-labelledby="guide-title"
+            className="relative isolate overflow-hidden border-y border-[rgba(212,175,55,0.12)] bg-[#0B1420] py-24 md:py-28"
+        >
+
+
             <div
                 aria-hidden
-                className="pointer-events-none absolute -top-16 left-0 right-0 -z-10 h-16 dark:hidden"
-                style={{
-                    background:
-                        "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(15,23,42,0.06) 45%, rgba(15,23,42,0.10) 100%)",
-                }}
-            />
-            <div
-                aria-hidden
-                className="pointer-events-none absolute -top-16 left-0 right-0 -z-10 hidden h-16 dark:block"
-                style={{
-                    background:
-                        "linear-gradient(to bottom, rgba(2,6,23,0) 0%, rgba(2,6,23,0.35) 40%, rgba(0,0,0,1) 100%)",
-                }}
+                className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(70%_68%_at_50%_18%,rgba(212,175,55,0.08),transparent_70%)]"
             />
 
-            {/* FX */}
-            <SectionFX
-                preset="mesh"
-                variant="neutral"
-                showGrid={false}
-                showLines={false}
-                className={cn(
-                    "dark:[--mesh-a:#0b1822] dark:[--mesh-b:#101827]",
-                    "[--mesh-a:#f7faf9] [--mesh-b:#eef6f2]"
-                )}
-            />
-
-            {/* Vinheta */}
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 dark:hidden"
-                style={{
-                    background:
-                        "radial-gradient(120% 80% at 50% 40%, rgba(15,23,42,0.06) 0%, transparent 72%)",
-                }}
-            />
-            <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 hidden dark:block"
-                style={{
-                    background:
-                        "radial-gradient(120% 80% at 50% 40%, rgba(0,0,0,0.40) 0%, transparent 70%)",
-                }}
+                className="pointer-events-none absolute inset-0 z-0 opacity-[0.032] [background-image:radial-gradient(rgba(231,224,209,0.72)_1px,transparent_1px)] [background-size:14px_14px]"
             />
 
-            {/* JSON-LD */}
             <script
                 type="application/ld+json"
                 suppressHydrationWarning
@@ -114,13 +80,13 @@ export function GuideCTA() {
                         ],
                         inLanguage: "pt-BR",
                         isAccessibleForFree: true,
-                        publisher: { "@type": "Organization", name: "Autentika Seguros" },
+                        publisher: { "@type": "Organization", name: "WLG Capital" },
                     }),
                 }}
             />
 
             <motion.div
-                className="mx-auto max-w-4xl"
+                className="relative z-10 mx-auto max-w-4xl"
                 variants={box}
                 initial="hidden"
                 whileInView="show"
@@ -128,102 +94,85 @@ export function GuideCTA() {
             >
                 <div
                     className={cn(
-                        "relative overflow-hidden rounded-3xl p-8 md:p-10",
-                        "flex flex-col items-center justify-center text-center",
-                        "border border-border bg-card shadow-sm backdrop-blur-md",
-                        "dark:border-white/10 dark:bg-white/[0.05] dark:shadow-none"
+                        "relative overflow-hidden rounded-[2rem] p-7 text-center backdrop-blur-md md:p-10",
+                        "border border-[rgba(212,175,55,0.18)]",
+                        "bg-[linear-gradient(135deg,rgba(17,28,42,0.84),rgba(11,20,32,0.96))]",
+                        "shadow-[0_28px_90px_rgba(0,0,0,0.24)]"
                     )}
                 >
-                    {/* band */}
                     <div
                         aria-hidden
-                        className="pointer-events-none absolute inset-x-0 top-0 h-1"
-                        style={{
-                            background:
-                                "linear-gradient(90deg, rgba(16,185,129,0.25), rgba(56,189,248,0.25), rgba(16,185,129,0.25))",
-                        }}
+                        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/55 to-transparent"
                     />
 
-                    {/* borda gradiente */}
                     <div
                         aria-hidden
-                        className="pointer-events-none absolute inset-0 rounded-3xl"
-                        style={{
-                            background: "linear-gradient(180deg, rgba(56,189,248,0.18), rgba(16,185,129,0.16))",
-                            mask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-                            WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
-                            WebkitMaskComposite: "xor",
-                            maskComposite: "exclude",
-                            padding: "1px",
-                            opacity: 0.55,
-                        }}
+                        className="pointer-events-none absolute right-0 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_top_right,rgba(212,175,55,0.10),transparent_58%)]"
                     />
 
-                    {/* ícone */}
                     <motion.div
                         variants={item}
-                        className={cn(
-                            "mx-auto inline-flex h-12 w-12 items-center justify-center rounded-xl",
-                            "bg-emerald-500/10 ring-1 ring-emerald-500/20"
-                        )}
+                        className="mx-auto inline-flex h-12 w-12 items-center justify-center rounded-2xl border border-[rgba(212,175,55,0.24)] bg-[#D4AF37]/[0.08] text-[#D4AF37]"
                     >
-                        <BookOpen className="h-6 w-6 text-emerald-600 dark:text-emerald-300" />
+                        <BookOpen className="h-6 w-6" />
                     </motion.div>
 
-                    {/* título + subtítulo */}
+                    <motion.p
+                        variants={item}
+                        className="mt-5 text-[11px] font-semibold uppercase tracking-[0.34em] text-[#D4AF37]/86"
+                    >
+                        Material educativo
+                    </motion.p>
+
                     <motion.h3
                         id="guide-title"
                         variants={item}
-                        className="mt-3 text-2xl font-semibold text-foreground md:text-3xl dark:text-white"
+                        className="mt-4 font-heading text-3xl font-medium leading-tight tracking-[-0.035em] text-[#F5EFE3] md:text-4xl"
                     >
-                        Baixe o Guia Estratégico do Consórcio
+                        Guia Estratégico do Consórcio
                     </motion.h3>
 
-                    <motion.p variants={item} className="mt-2 text-muted-foreground md:text-lg dark:text-slate-200/90">
-                        Entenda como transformar o consórcio em uma estratégia real de alavancagem patrimonial
-                        previsível, segura e sem juros.
+                    <motion.p
+                        variants={item}
+                        className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[#E7E0D1]/68 md:text-[1.03rem]"
+                    >
+                        Entenda como usar o consórcio como ferramenta de planejamento,
+                        aquisição e construção de patrimônio com método, segurança e
+                        previsibilidade.
                     </motion.p>
 
-                    {/* bullets */}
                     <motion.ul
                         variants={item}
-                        className={cn(
-                            "mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-4 text-left text-sm sm:grid-cols-2",
-                            "text-muted-foreground dark:text-slate-300"
-                        )}
+                        className="mx-auto mt-7 grid max-w-2xl grid-cols-1 gap-3 text-left text-sm text-[#E7E0D1]/72 sm:grid-cols-2"
                     >
-                        <li className="inline-flex items-start gap-3">
-                            <CheckCircle2 className="mt-[2px] h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                            Diferença Consórcio x Financiamento
-                        </li>
-                        <li className="inline-flex items-start gap-3">
-                            <CheckCircle2 className="mt-[2px] h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                            Estratégias de lance por perfil
-                        </li>
-                        <li className="inline-flex items-start gap-3">
-                            <CheckCircle2 className="mt-[2px] h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                            Simulações e cenários práticos
-                        </li>
-                        <li className="inline-flex items-start gap-3">
-                            <CheckCircle2 className="mt-[2px] h-4 w-4 text-emerald-600 dark:text-emerald-400" />
-                            Checklist LGPD e compliance
-                        </li>
+                        {[
+                            "Diferença entre consórcio e financiamento",
+                            "Estratégias de lance por perfil",
+                            "Simulações e cenários práticos",
+                            "Checklist de segurança e compliance",
+                        ].map((text) => (
+                            <li key={text} className="inline-flex items-start gap-3">
+                                <CheckCircle2 className="mt-[2px] h-4 w-4 shrink-0 text-[#D4AF37]" />
+                                {text}
+                            </li>
+                        ))}
                     </motion.ul>
 
-                    {/* CTAs */}
-                    <motion.div variants={item} className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+                    <motion.div
+                        variants={item}
+                        className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row"
+                    >
                         <Button
                             size="lg"
-                            onClick={() => router.push("/guia-consorcio?lp=autentika")}
+                            onClick={() => router.push("/guia-consorcio?lp=wlg-capital")}
                             className={cn(
-                                "bg-emerald-500 text-black hover:bg-emerald-400",
-                                "focus-visible:ring-2 focus-visible:ring-emerald-400",
-                                "focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                                "dark:focus-visible:ring-offset-slate-900"
+                                "h-11 rounded-full bg-[#D4AF37] px-6 text-sm font-semibold text-[#0B1420]",
+                                "hover:bg-[#C69A2F]",
+                                "shadow-[0_14px_40px_rgba(212,175,55,0.16)]"
                             )}
                         >
                             <BookOpen className="mr-2 h-5 w-5" />
-                            Baixar meu guia gratuito
+                            Baixar guia gratuito
                         </Button>
 
                         <Button
@@ -231,43 +180,33 @@ export function GuideCTA() {
                             size="lg"
                             variant="outline"
                             className={cn(
-                                "border-border text-foreground hover:bg-muted",
-                                "dark:border-white/20 dark:text-slate-100 dark:hover:bg-white/10"
+                                "h-11 rounded-full border-[rgba(212,175,55,0.26)] bg-white/[0.03] px-6 text-sm font-semibold text-[#E7E0D1]/88",
+                                "hover:border-[#D4AF37]/70 hover:bg-[#D4AF37]/8 hover:text-[#F5EFE3]"
                             )}
                         >
                             <Link href={waHref} target="_blank" rel="noopener noreferrer">
-                                <ShieldCheck className="mr-2 h-5 w-5 text-emerald-600 dark:text-current" />
+                                <ShieldCheck className="mr-2 h-5 w-5 text-[#D4AF37]" />
                                 Falar com consultor
                             </Link>
                         </Button>
                     </motion.div>
 
-                    {/* LGPD */}
                     <motion.p
                         variants={item}
-                        className="mx-auto mt-4 max-w-md text-xs leading-relaxed text-muted-foreground dark:text-slate-500"
+                        className="mx-auto mt-5 max-w-md text-[11px] leading-relaxed text-[#E7E0D1]/38"
                     >
-                        Material gratuito e educativo. Envio apenas mediante consentimento (LGPD). Não contém promessas de
-                        contemplação, apenas métodos, dados e exemplos reais.
+                        Material gratuito e educativo. Não contém promessa de contemplação,
+                        apenas orientação, métodos e exemplos práticos.
                     </motion.p>
                 </div>
             </motion.div>
 
-            {/* Costura inferior */}
             <div
                 aria-hidden
-                className="pointer-events-none absolute -bottom-16 left-0 right-0 -z-10 h-16 dark:hidden"
+                className="pointer-events-none absolute inset-x-0 -bottom-24 z-[1] h-32"
                 style={{
                     background:
-                        "linear-gradient(to top, rgba(255,255,255,0) 0%, rgba(15,23,42,0.06) 45%, rgba(15,23,42,0.10) 100%)",
-                }}
-            />
-            <div
-                aria-hidden
-                className="pointer-events-none absolute -bottom-16 left-0 right-0 -z-10 hidden h-16 dark:block"
-                style={{
-                    background:
-                        "linear-gradient(to top, rgba(2,6,23,0) 0%, rgba(2,6,23,0.35) 40%, rgba(0,0,0,1) 100%)",
+                        "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.52) 45%, #0B1420 100%)",
                 }}
             />
         </Section>

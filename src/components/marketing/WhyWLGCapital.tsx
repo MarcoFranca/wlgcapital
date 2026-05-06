@@ -68,14 +68,15 @@ export function WhyWLGCapital() {
             aria-labelledby="why-title"
             className="relative isolate overflow-hidden border-y border-[rgba(212,175,55,0.12)] bg-[#0B1420] py-24 md:py-28"
         >
-            {/*<div*/}
-            {/*    aria-hidden*/}
-            {/*    className="pointer-events-none absolute inset-x-0 -top-24 z-[1] h-32"*/}
-            {/*    style={{*/}
-            {/*        background:*/}
-            {/*            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.52) 45%, #0B1420 100%)",*/}
-            {/*    }}*/}
-            {/*/>*/}
+            {/* Transição superior com profundidade */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 -top-24 z-[1] h-32"
+                style={{
+                    background:
+                        "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 45%, #0B1420 100%)",
+                }}
+            />
 
             <div
                 aria-hidden

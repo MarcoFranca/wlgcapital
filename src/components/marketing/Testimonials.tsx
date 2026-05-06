@@ -4,20 +4,20 @@ import { motion, type Variants } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Section } from "./Section";
 import { Quote } from "lucide-react";
-import { SectionFX } from "@/components/marketing/SectionFX";
+import { cn } from "@/lib/utils";
 
 const depoimentos = [
     {
         name: "Thiago R.",
-        text: "Consegui ser contemplado em menos de um ano com o plano estratégico da Autentika. Tudo foi calculado com base no histórico do grupo, nada de promessa, só método.",
+        text: "Consegui estruturar minha compra com uma estratégia clara. Tudo foi explicado com base no histórico do grupo, sem promessa, apenas método.",
     },
     {
         name: "Larissa M.",
-        text: "Sempre tive receio de consórcio, mas o atendimento consultivo me mostrou como usar o consórcio para construir patrimônio de forma previsível e sem juros.",
+        text: "Sempre tive receio de consórcio, mas o atendimento consultivo me mostrou como usar essa modalidade para construir patrimônio com mais previsibilidade.",
     },
     {
         name: "Eduardo V.",
-        text: "Paguei tranquilo, entendi cada assembleia e tive suporte em todas as etapas. Hoje recomendo a Autentika para amigos que querem investir com segurança.",
+        text: "Entendi cada etapa, cada assembleia e cada decisão de lance. Hoje recomendo a WLG Capital para quem quer investir com segurança.",
     },
 ];
 
@@ -48,63 +48,71 @@ export function Testimonials() {
         <Section
             id="depoimentos"
             aria-labelledby="testimonials-title"
-            className="relative isolate overflow-hidden py-28 md:py-32"
+            className="relative isolate overflow-hidden border-y border-[rgba(212,175,55,0.12)] bg-[#0B1420] py-24 md:py-28"
         >
-            {/* Fundo: mantém estética no dark; no light deixa premium e legível */}
-            <SectionFX preset="fineLines" variant="neutral" beamsTilt={-10} />
-
-            {/* Halos: DARK (como estava) */}
+            {/* Transição superior com profundidade */}
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 hidden dark:block"
+                className="pointer-events-none absolute inset-x-0 -top-24 z-[1] h-32"
                 style={{
                     background:
-                        "radial-gradient(60% 60% at 50% 40%, rgba(16,185,129,0.10), transparent 70%), radial-gradient(80% 50% at 90% 20%, rgba(56,189,248,0.06), transparent 80%)",
-                }}
-            />
-            {/* Halos: LIGHT (mais claro, sem “lavar” o texto) */}
-            <div
-                aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 dark:hidden"
-                style={{
-                    background:
-                        "radial-gradient(60% 60% at 50% 40%, rgba(16,185,129,0.08), transparent 70%), radial-gradient(80% 50% at 90% 20%, rgba(56,189,248,0.05), transparent 80%)",
+                        "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 45%, #0B1420 100%)",
                 }}
             />
 
-            {/* Título + subtítulo */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(72%_62%_at_50%_0%,rgba(212,175,55,0.08),transparent_70%)]"
+            />
+
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 z-0 opacity-[0.032] [background-image:radial-gradient(rgba(231,224,209,0.72)_1px,transparent_1px)] [background-size:14px_14px]"
+            />
+
             <motion.div
                 variants={container}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-80px" }}
-                className="mx-auto mb-12 max-w-2xl text-center"
+                className="relative z-10 mx-auto mb-12 max-w-2xl text-center"
             >
+                <motion.p
+                    variants={item}
+                    className="text-[11px] font-semibold uppercase tracking-[0.34em] text-[#D4AF37]/86"
+                >
+                    Clientes WLG Capital
+                </motion.p>
+
                 <motion.h2
                     variants={item}
                     id="testimonials-title"
-                    className="text-3xl font-semibold md:text-4xl text-foreground dark:text-white"
+                    className={cn(
+                        "mt-4 text-balance font-heading font-medium tracking-[-0.035em] text-[#F5EFE3]",
+                        "text-3xl leading-tight md:text-4xl"
+                    )}
                 >
-                    Histórias de quem conquistou com método
+                    Histórias de quem decidiu
+                    <br className="hidden sm:block" /> com estratégia.
                 </motion.h2>
-
-                <motion.p
-                    variants={item}
-                    className="mt-3 md:text-lg text-muted-foreground dark:text-slate-200/90"
-                >
-                    Experiências reais de clientes que planejaram, executaram e conquistaram com estratégia.
-                </motion.p>
 
                 <motion.div
                     variants={item}
                     aria-hidden
-                    className="mx-auto mt-4 h-[2px] w-20 rounded-full bg-gradient-to-r from-emerald-500/50 via-teal-400/40 to-emerald-500/50 dark:from-emerald-400/60 dark:via-teal-300/50 dark:to-emerald-400/60"
+                    className="premium-divider mx-auto mt-5 w-28"
                 />
+
+                <motion.p
+                    variants={item}
+                    className="mx-auto mt-5 max-w-xl text-balance text-base leading-7 text-[#E7E0D1]/68 md:text-[1.03rem]"
+                >
+                    Relatos de clientes que transformaram planejamento em decisão, com
+                    clareza, método e acompanhamento consultivo.
+                </motion.p>
             </motion.div>
 
-            {/* Depoimentos */}
             <motion.div
-                className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3"
+                className="relative z-10 mx-auto grid max-w-6xl gap-4 md:grid-cols-3"
                 variants={container}
                 initial="hidden"
                 whileInView="show"
@@ -112,41 +120,47 @@ export function Testimonials() {
                 role="list"
             >
                 {depoimentos.map((d) => (
-                    <motion.div key={d.name} variants={item} role="listitem" className="relative group">
-                        {/* Halo atrás do card (ok nos dois temas) */}
+                    <motion.div
+                        key={d.name}
+                        variants={item}
+                        role="listitem"
+                        className="group relative"
+                    >
                         <div
                             aria-hidden
-                            className="absolute -inset-2 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                            className="absolute -inset-2 rounded-3xl opacity-0 blur-2xl transition-opacity duration-700 group-hover:opacity-100"
                             style={{
                                 background:
-                                    "radial-gradient(70% 70% at 50% 0%, rgba(16,185,129,0.12), transparent 80%)",
-                                filter: "blur(18px)",
+                                    "radial-gradient(70% 70% at 50% 0%, rgba(212,175,55,0.12), transparent 80%)",
                             }}
                         />
 
-                        {/* Card: LIGHT usa tokens (bg-card/border-border/text), DARK mantém seu look */}
                         <Card
-                            className="
-                relative h-full
-                border border-border bg-card shadow-sm
-                transition-all
-                hover:-translate-y-1 hover:shadow-[0_12px_36px_rgba(16,185,129,0.10)]
-                dark:border-white/10 dark:bg-white/[0.04] dark:shadow-none
-                dark:hover:shadow-[0_12px_36px_rgba(16,185,129,0.12)]
-                hover:border-emerald-500/30 dark:hover:border-emerald-400/30
-              "
+                            className={cn(
+                                "relative h-full overflow-hidden rounded-2xl",
+                                "border border-[rgba(212,175,55,0.15)]",
+                                "bg-[linear-gradient(180deg,rgba(17,28,42,0.78),rgba(11,20,32,0.94))]",
+                                "shadow-[0_22px_70px_rgba(0,0,0,0.18)]",
+                                "transition-all duration-300",
+                                "hover:-translate-y-1 hover:border-[rgba(212,175,55,0.34)] hover:shadow-[0_26px_80px_rgba(212,175,55,0.08)]"
+                            )}
                         >
-                            <CardContent className="relative px-6 pt-8 pb-6">
+                            <div
+                                aria-hidden
+                                className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            />
+
+                            <CardContent className="relative px-6 pb-6 pt-8">
                                 <Quote
-                                    className="absolute left-5 top-5 h-5 w-5 text-emerald-600/70 dark:text-emerald-400 opacity-70"
+                                    className="absolute left-5 top-5 h-5 w-5 text-[#D4AF37]/58"
                                     aria-hidden
                                 />
 
-                                <p className="mt-5 text-base leading-relaxed text-foreground/90 dark:text-white/90">
+                                <p className="mt-6 text-base leading-relaxed text-[#E7E0D1]/82">
                                     “{d.text}”
                                 </p>
 
-                                <p className="mt-4 text-sm font-medium text-muted-foreground dark:text-slate-400">
+                                <p className="mt-5 text-sm font-medium text-[#D4AF37]/86">
                                     {d.name}
                                 </p>
                             </CardContent>
@@ -155,17 +169,26 @@ export function Testimonials() {
                 ))}
             </motion.div>
 
-            {/* Compliance */}
             <motion.p
                 variants={item}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-40px" }}
-                className="mx-auto mt-10 max-w-3xl text-center text-xs text-muted-foreground dark:text-slate-500"
+                className="relative z-10 mx-auto mt-10 max-w-3xl text-center text-[11px] leading-relaxed text-[#E7E0D1]/36"
             >
-                Depoimentos verificados de clientes reais. Resultados podem variar conforme grupo e
-                estratégia. Não há promessa de contemplação.
+                Depoimentos refletem experiências individuais. Resultados podem variar
+                conforme grupo, assembleia, estratégia e disponibilidade financeira. Não
+                há promessa de contemplação.
             </motion.p>
+
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 -bottom-24 z-[1] h-32"
+                style={{
+                    background:
+                        "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.52) 45%, #0B1420 100%)",
+                }}
+            />
         </Section>
     );
 }
