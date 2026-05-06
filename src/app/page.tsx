@@ -21,7 +21,7 @@ export default function Page() {
                 waPhone={process.env.NEXT_PUBLIC_WA_PHONE ?? "5521969639576"}
                 years={10}
                 cnpj="25.241.008/0001-70"
-                susep="30QP3J"
+                susep="202033775"
                 linkedinUrl="https://www.linkedin.com/in/wagner-lisboa-gorgulho-90653653/"
                 instagramUrl="https://www.instagram.com/wagnergorgulho?igsh=c2N4c3Rpa2ZxaXhn"
             />
