@@ -185,17 +185,9 @@ export function Hero() {
                             "border border-[rgba(212,175,55,0.16)] bg-[#0B1420]/35 text-[#D4AF37]/76 backdrop-blur"
                         )}
                     >
-                        Atendimento consultivo pelo WhatsApp. Sem promessa de contemplação garantida.
+                        Atendimento consultivo pelo WhatsApp.
                     </motion.p>
 
-                    <motion.p
-                        variants={item}
-                        className="mx-auto mt-4 max-w-2xl text-center text-[11px] leading-5 text-[#E7E0D1]/34"
-                    >
-                        Estimativas de contemplação são projeções baseadas em histórico,
-                        perfil do grupo e sazonalidade. Consórcio não possui garantia de
-                        contemplação em prazo específico.
-                    </motion.p>
                 </motion.div>
 
                 <ScrollCue

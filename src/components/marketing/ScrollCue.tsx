@@ -7,7 +7,10 @@ import { cn } from "@/lib/utils";
 export function ScrollCue({
                               targetId = "como-funciona",
                               className,
-                          }: { targetId?: string; className?: string }) {
+                          }: {
+    targetId?: string;
+    className?: string;
+}) {
     const reduce = useReducedMotion();
 
     function go() {
@@ -22,48 +25,59 @@ export function ScrollCue({
             onClick={go}
             aria-label="Rolar para ver mais"
             className={cn(
-                "group absolute bottom-4 left-1/2 -translate-x-1/2 z-20",
+                "group absolute bottom-4 left-1/2 z-20 -translate-x-1/2",
                 "inline-flex h-20 w-16 flex-col items-center justify-center",
-                "rounded-2xl px-2 py-2 select-none touch-manipulation cursor-pointer",
-                // LIGHT
-                "bg-card/80 text-foreground border border-border shadow-sm backdrop-blur",
-                "hover:bg-card hover:border-emerald-300/40",
-                // DARK
-                "dark:bg-white/[0.02] dark:text-slate-300/80 dark:border-white/15 dark:shadow-none",
-                "dark:hover:text-white dark:hover:bg-emerald-400/10 dark:hover:border-emerald-400/40",
-                // focus
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70",
+                "select-none rounded-2xl px-2 py-2 touch-manipulation cursor-pointer",
+                "border border-[rgba(212,175,55,0.18)] bg-[#0B1420]/42 text-[#E7E0D1]/70 backdrop-blur-md",
+                "shadow-[0_18px_60px_rgba(0,0,0,0.22)]",
+                "transition-all duration-300",
+                "hover:border-[rgba(212,175,55,0.42)] hover:bg-[#D4AF37]/[0.06] hover:text-[#F5EFE3]",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]/70",
+                "focus-visible:ring-offset-2 focus-visible:ring-offset-[#0B1420]",
                 className
             )}
         >
             <motion.span
                 aria-hidden
                 className={cn(
-                    "mb-1 block h-6 w-4 rounded-full border pointer-events-none",
-                    "border-foreground/25 group-hover:border-emerald-400/60",
-                    "dark:border-white/30 dark:group-hover:border-emerald-300/70"
+                    "pointer-events-none mb-1 block h-6 w-4 rounded-full border",
+                    "border-[#E7E0D1]/24 transition-colors",
+                    "group-hover:border-[#D4AF37]/70"
                 )}
-                animate={reduce ? {} : { opacity: [0.7, 1, 0.7] }}
+                animate={reduce ? {} : { opacity: [0.65, 1, 0.65] }}
                 transition={reduce ? {} : { duration: 2.4, repeat: Infinity }}
             >
                 <motion.span
                     className={cn(
-                        "mx-auto mt-1 block h-1.5 w-1.5 rounded-full pointer-events-none",
-                        "bg-foreground/60 group-hover:bg-emerald-500",
-                        "dark:bg-white/70 dark:group-hover:bg-emerald-200"
+                        "pointer-events-none mx-auto mt-1 block h-1.5 w-1.5 rounded-full",
+                        "bg-[#E7E0D1]/62 transition-colors",
+                        "group-hover:bg-[#D4AF37]"
                     )}
-                    animate={reduce ? {} : { y: [0, 6, 0], opacity: [1, 0.5, 1] }}
-                    transition={reduce ? {} : { duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                    animate={reduce ? {} : { y: [0, 6, 0], opacity: [1, 0.55, 1] }}
+                    transition={
+                        reduce
+                            ? {}
+                            : { duration: 1.6, repeat: Infinity, ease: "easeInOut" }
+                    }
                 />
             </motion.span>
 
             <motion.div
                 aria-hidden
-                className="flex items-center justify-center pointer-events-none"
+                className="pointer-events-none flex items-center justify-center"
                 animate={reduce ? {} : { y: [0, 4, 0] }}
-                transition={reduce ? {} : { duration: 1.6, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+                transition={
+                    reduce
+                        ? {}
+                        : {
+                            duration: 1.6,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                            delay: 0.2,
+                        }
+                }
             >
-                <ChevronDown className="h-5 w-5 opacity-80 transition-all group-hover:opacity-100 group-hover:text-emerald-500 dark:group-hover:text-emerald-300" />
+                <ChevronDown className="h-5 w-5 opacity-80 transition-all group-hover:text-[#D4AF37] group-hover:opacity-100" />
             </motion.div>
         </button>
     );
