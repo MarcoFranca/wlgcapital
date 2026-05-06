@@ -9,8 +9,11 @@ import {
     ShieldCheck,
     LineChart,
     MessageCircle,
-    Instagram,
 } from "lucide-react";
+
+import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa"
+
+
 import { motion, type Variants, useReducedMotion } from "framer-motion";
 import { SectionFX } from "@/components/marketing/SectionFX";
 import {SectionSeam} from "@/components/marketing/SectionSeam";
@@ -107,7 +110,7 @@ export function FounderSection({
                         "@type": "Person",
                         name,
                         jobTitle: "Corretor e Fundador",
-                        worksFor: { "@type": "Organization", name: "Autentika Seguros" },
+                        worksFor: { "@type": "Organization", name: "WLG Capital" },
                         sameAs: linkedinUrl ? [linkedinUrl] : [],
                     }),
                 }}
@@ -230,7 +233,7 @@ export function FounderSection({
                                 className="border-border text-foreground hover:bg-muted focus-visible:ring-2 focus-visible:ring-emerald-400 focus-visible:ring-offset-2 focus-visible:ring-offset-background dark:border-white/20 dark:text-slate-100 dark:hover:bg-white/10 dark:focus-visible:ring-offset-slate-900"
                             >
                                 <Link href={instagramUrl} target="_blank" rel="me noopener noreferrer">
-                                    <Instagram className="mr-2 h-4 w-4" />
+                                    <FaInstagram className="h-4 w-4" />
                                     Ver Instagram
                                 </Link>
                             </Button>

@@ -12,8 +12,9 @@ import {
     ShieldCheck,
     MapPin,
     Building2,
-    Linkedin,
 } from "lucide-react";
+import { FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa"
+
 import { cn } from "@/lib/utils";
 
 type Props = {
@@ -25,15 +26,15 @@ type Props = {
 };
 
 export function SiteFooter({
-                               waPhone = process.env.NEXT_PUBLIC_WA_PHONE ?? "5511999999999",
-                               email = "contato@autentikadigital.com",
+                               waPhone = process.env.NEXT_PUBLIC_WA_PHONE ?? "5521969639576",
+                               email = "contato@wlgcapital.com.br",
                                cnpj,
                                linkedinUrl,
                                siteUrl = "https://autentika.example.com",
                            }: Props) {
     const waHref = useMemo(() => {
         const wa = new URL(`https://wa.me/${waPhone}`);
-        wa.searchParams.set("text", "Olá! Gostaria de falar com a Autentika sobre consórcio.");
+        wa.searchParams.set("text", "Olá! Gostaria de falar com a WLG Capital sobre consórcio.");
         wa.searchParams.set("utm_source", "lp_home");
         wa.searchParams.set("utm_medium", "footer_cta");
         return wa.toString();
@@ -55,8 +56,8 @@ export function SiteFooter({
                         __html: JSON.stringify({
                             "@context": "https://schema.org",
                             "@type": "Organization",
-                            name: "Autentika Seguros",
-                            slogan: "Planeje hoje, conquiste sempre.",
+                            name: "WLG Capital",
+                            slogan: "Quem planeja conquista.",
                             url: siteUrl,
                             sameAs: linkedinUrl ? [linkedinUrl] : [],
                             contactPoint: [
@@ -76,16 +77,21 @@ export function SiteFooter({
                 <div className="grid gap-10 md:grid-cols-4">
                     {/* Coluna 1 */}
                     <div>
-                        <div className="flex items-center gap-2">
+                        <Link href="/" className="flex items-center gap-2">
                             <Image
                                 src="/incone_WLG.png"
-                                alt="Autentika Corretora"
+                                alt="WLG Capital"
                                 width={32}
                                 height={32}
                                 className="h-8 w-8"
                             />
-                            <p className="font-semibold text-foreground">Autentika Corretora</p>
-                        </div>
+                            <Image
+                                src="/icone_horizontal.png"
+                                alt="Autentika Corretora"
+                                width={80}
+                                height={12}
+                            />
+                        </Link>
 
                         <p className="mt-3 max-w-sm text-sm text-muted-foreground">
                             Soluções inteligentes de consórcio e proteção patrimonial — método, previsibilidade e disciplina.
@@ -161,7 +167,7 @@ export function SiteFooter({
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground"
                             >
-                                <Linkedin className="h-4 w-4" />
+                                <FaLinkedin className="h-4 w-4" />
                                 LinkedIn
                             </Link>
                         )}
@@ -193,13 +199,13 @@ export function SiteFooter({
                     </div>
 
                     <p className="text-sm text-muted-foreground md:text-right">
-                        “O propósito da Autentika não é vender consórcio, é construir liberdade com método.”
+                        “O propósito da WLG Capital não é vender consórcio, é construir liberdade com método.”
                     </p>
                 </div>
 
                 {/* Copy final */}
                 <div className="mt-8 text-xs text-muted-foreground/80">
-                    © <span suppressHydrationWarning>{new Date().getFullYear()}</span> Autentika Corretora. Todos os direitos reservados.
+                    © <span suppressHydrationWarning>{new Date().getFullYear()}</span> WLG Capital. Todos os direitos reservados.
                 </div>
             </Section>
         </footer>

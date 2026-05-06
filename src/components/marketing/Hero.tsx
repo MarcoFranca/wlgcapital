@@ -34,50 +34,57 @@ export function Hero() {
     const reduce = useReducedMotion();
 
     return (
-        <div className="relative isolate overflow-hidden">
-            {/* BG animado */}
+        <div className="relative isolate overflow-hidden bg-[#0B1420]">
+            {/* Imagem arquitetônica */}
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+                <img
+                    src="/hero-house.png"
+                    alt="croque de imóveis"
+                    aria-hidden="true"
+                    className={cn(
+                        "absolute left-0 top-1/2 h-[92%] w-auto -translate-y-1/2",
+                        "object-contain opacity-[0.65]",
+                        "md:h-[105%] lg:h-[112%]"
+                    )}
+                />
+
+                {/*<div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(11,20,32,0.18),rgba(11,20,32,0.48)_38%,rgba(11,20,32,0.94)_74%)]" />*/}
+
+                <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(11,20,32,0.30),rgba(11,20,32,0.82))]" />
+            </div>
+
+            {/* Glow dourado */}
             <motion.div
                 aria-hidden
                 className={cn(
-                    "absolute inset-0 -z-10",
-                    "bg-[radial-gradient(80%_60%_at_50%_0%,rgba(16,185,129,0.18),rgba(16,185,129,0.06)_40%,transparent_70%)]",
-                    "dark:bg-[radial-gradient(80%_60%_at_50%_0%,rgba(16,185,129,0.24),rgba(16,185,129,0.08)_40%,transparent_70%)]"
+                    "absolute inset-0 z-[1]",
+                    "bg-[radial-gradient(70%_50%_at_50%_0%,rgba(212,175,55,0.11),rgba(212,175,55,0.035)_36%,transparent_72%)]"
                 )}
-                animate={reduce ? {} : { opacity: [0.9, 1, 0.9], scale: [1, 1.03, 1] }}
-                transition={reduce ? {} : { duration: 12, repeat: Infinity, ease: [0.4, 0, 0.2, 1] }}
+                animate={
+                    reduce ? {} : { opacity: [0.62, 0.9, 0.62], scale: [1, 1.018, 1] }
+                }
+                transition={
+                    reduce
+                        ? {}
+                        : { duration: 16, repeat: Infinity, ease: [0.4, 0, 0.2, 1] }
+                }
             />
 
-            <motion.div
-                aria-hidden
-                className={cn(
-                    "pointer-events-none absolute inset-0 -z-10",
-                    "bg-[radial-gradient(40%_30%_at_50%_45%,rgba(16,185,129,0.08),transparent_60%)]",
-                    "dark:bg-[radial-gradient(40%_30%_at_50%_45%,rgba(16,185,129,0.18),transparent_60%)]"
-                )}
-                animate={reduce ? {} : { opacity: [0.6, 0.8, 0.6], y: [0, -6, 0] }}
-                transition={reduce ? {} : { duration: 10, repeat: Infinity, ease: [0.4, 0, 0.2, 1] }}
-            />
-
-            {/* grade de pontos só no dark */}
+            {/* Textura/pontos */}
             <div
                 aria-hidden
                 className={cn(
-                    "pointer-events-none absolute inset-0 -z-10 opacity-[0.06]",
-                    "[background-image:radial-gradient(rgba(15,23,42,0.25)_1px,transparent_1px)]",
-                    "[background-size:12px_12px]",
-                    "dark:[background-image:radial-gradient(rgba(255,255,255,0.6)_1px,transparent_1px)]"
+                    "pointer-events-none absolute inset-0 z-[2] opacity-[0.028]",
+                    "[background-image:radial-gradient(rgba(231,224,209,0.72)_1px,transparent_1px)]",
+                    "[background-size:14px_14px]"
                 )}
             />
 
             <Section
                 className={cn(
-                    "relative min-h-[100svh] flex flex-col items-center",
-                    // default (telas normais)
-                    "justify-center pt-24",
-                    // RESPIRO GARANTIDO p/ ScrollCue (altura dele + margem)
+                    "relative z-10 flex min-h-[100svh] flex-col items-center justify-center pt-28",
                     "pb-[9.5rem]",
-                    // telas baixas (laptop): não centraliza, reduz espaçamentos e fonte
-                    "max-[820px]:justify-start max-[820px]:pt-20 max-[820px]:pb-[8.5rem]"
+                    "max-[820px]:justify-start max-[820px]:pt-28 max-[820px]:pb-[8.5rem]"
                 )}
             >
                 <motion.div
@@ -87,114 +94,113 @@ export function Hero() {
                     whileInView="show"
                     viewport={{ once: true, margin: "-80px" }}
                 >
-                    {/* Selo superior */}
                     <motion.div
                         variants={item}
                         className={cn(
-                            "inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs md:text-sm backdrop-blur",
-                            "border border-emerald-500/20 bg-emerald-50/80 text-emerald-800 shadow-sm",
-                            "dark:border-white/15 dark:bg-white/5 dark:text-slate-300 dark:shadow-none"
+                            "inline-flex items-center gap-2 rounded-full px-5 py-2 text-[10px] uppercase tracking-[0.28em] backdrop-blur",
+                            "border border-[rgba(212,175,55,0.22)] bg-[#D4AF37]/[0.06] text-[#D4AF37]/90",
+                            "shadow-[0_14px_40px_rgba(212,175,55,0.06)]"
                         )}
                     >
-                        <span className="font-medium">Autentika Corretora</span>
+                        <span className="font-medium">WLG Capital</span>
                         <span aria-hidden>•</span>
-                        <span>Estratégia real, sem juros.</span>
+                        <span>Consórcios inteligentes</span>
                     </motion.div>
 
-                    {/* Headline */}
                     <motion.h1
                         variants={item}
                         className={cn(
-                            "mt-6 text-balance font-bold tracking-tight text-foreground",
-                            "text-4xl md:text-5xl",
-                            // telas baixas: segura um pouco
-                            "max-[820px]:text-[2.25rem] max-[820px]:leading-[1.05]"
+                            "mt-10 text-balance font-heading font-medium tracking-[-0.045em] text-[#F5EFE3]",
+                            "text-4xl leading-[0.98] md:text-5xl lg:text-6xl",
+                            "max-[820px]:mt-8 max-[820px]:text-[2.35rem]"
                         )}
                     >
-                        Pare de adiar a sua conquista.
+                        Planeje hoje.
                         <br />
-                        <span className="text-emerald-500 dark:text-emerald-400">
-              Use consórcio como estratégia,
-            </span>{" "}
-                        não como esperança.
+                        <span className="text-[#D4AF37]">
+              Conquiste com estratégia.
+            </span>
                     </motion.h1>
 
-                    {/* Subheadline */}
+                    <motion.div
+                        variants={item}
+                        className="premium-divider mx-auto mt-6 w-32"
+                    />
+
                     <motion.p
                         variants={item}
                         className={cn(
-                            "mt-4 text-balance text-lg md:text-xl",
-                            "text-muted-foreground dark:text-slate-300",
-                            "max-[820px]:text-base"
+                            "mx-auto mt-5 max-w-xl text-balance text-base leading-7 text-[#E7E0D1]/74 md:text-[1.05rem]",
+                            "max-[820px]:text-[0.98rem] max-[820px]:leading-7"
                         )}
                     >
-                        Enquanto o banco cobra juros e o aluguel sobe, você precisa de um plano.
-                        Aqui você recebe um <strong>diagnóstico consultivo</strong> para escolher o consórcio certo
-                        (imóvel ou auto) e executar com previsibilidade.
+                        Consórcios inteligentes para comprar, investir ou construir
+                        patrimônio com segurança, previsibilidade e orientação consultiva.
                     </motion.p>
 
-                    {/* CTAs */}
                     <motion.div
                         variants={item}
-                        className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row max-[820px]:mt-6"
+                        className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row max-[820px]:mt-7"
                     >
-                        <motion.div whileHover={reduce ? {} : { y: -2 }} whileTap={reduce ? {} : { scale: 0.98 }} className="inline-flex">
+                        <motion.div
+                            whileHover={reduce ? {} : { y: -2 }}
+                            whileTap={reduce ? {} : { scale: 0.98 }}
+                            className="inline-flex"
+                        >
                             <Button
-                                size="lg"
+                                size="default"
                                 onClick={() => router.push("#diagnostico")}
                                 className={cn(
-                                    "bg-emerald-500 text-black hover:bg-emerald-400",
-                                    "focus-visible:ring-2 focus-visible:ring-emerald-400",
-                                    "focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                                    "h-11 rounded-full bg-[#D4AF37] px-6 text-sm font-semibold text-[#0B1420]",
+                                    "hover:bg-[#C69A2F]",
+                                    "shadow-[0_14px_40px_rgba(212,175,55,0.16)]"
                                 )}
                             >
-                                Quero meu diagnóstico agora
+                                Falar com um consultor
                             </Button>
                         </motion.div>
 
-                        <motion.div whileTap={reduce ? {} : { scale: 0.98 }} className="inline-flex">
+                        <motion.div
+                            whileTap={reduce ? {} : { scale: 0.98 }}
+                            className="inline-flex"
+                        >
                             <Button
-                                size="lg"
+                                size="default"
                                 variant="outline"
                                 onClick={() => router.push("#como-funciona")}
                                 className={cn(
-                                    "border-border text-foreground hover:bg-muted",
-                                    "dark:border-white/20 dark:text-slate-100 dark:hover:bg-white/10",
-                                    "focus-visible:ring-2 focus-visible:ring-emerald-400",
-                                    "focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                                    "h-11 rounded-full border-[rgba(212,175,55,0.26)] bg-white/[0.03] px-6 text-sm font-semibold text-[#E7E0D1]/88",
+                                    "hover:border-[#D4AF37]/70 hover:bg-[#D4AF37]/8 hover:text-[#F5EFE3]"
                                 )}
                             >
-                                Ver como funciona (2 min)
+                                Entender como funciona
                             </Button>
                         </motion.div>
                     </motion.div>
 
-                    {/* Observação curta */}
                     <motion.p
                         variants={item}
-                        className="mt-3 text-[12px] text-muted-foreground/80 dark:text-slate-500"
+                        className={cn(
+                            "mx-auto mt-5 inline-flex max-w-full items-center justify-center rounded-full px-4 py-1.5 text-center text-[9.5px] uppercase tracking-[0.22em]",
+                            "border border-[rgba(212,175,55,0.16)] bg-[#0B1420]/35 text-[#D4AF37]/76 backdrop-blur"
+                        )}
                     >
-                        Sem ligação indesejada. Você fala direto com um especialista pelo WhatsApp.
+                        Atendimento consultivo pelo WhatsApp. Sem promessa de contemplação garantida.
                     </motion.p>
 
-                    {/* Disclaimer */}
                     <motion.p
                         variants={item}
-                        className="mt-6 text-[11px] text-muted-foreground/70 dark:text-slate-500 text-center max-[820px]:mt-4"
+                        className="mx-auto mt-4 max-w-2xl text-center text-[11px] leading-5 text-[#E7E0D1]/34"
                     >
-                        Estimativas de contemplação são projeções baseadas em histórico e sazonalidade. Não há garantia de contemplação.
+                        Estimativas de contemplação são projeções baseadas em histórico,
+                        perfil do grupo e sazonalidade. Consórcio não possui garantia de
+                        contemplação em prazo específico.
                     </motion.p>
                 </motion.div>
 
-                {/* ScrollCue com margem maior e “blindagem” contra overlap */}
                 <ScrollCue
                     targetId="como-funciona"
-                    className={cn(
-                        // sobe um pouco em relação ao padrão
-                        "bottom-6",
-                        // em telas baixas, sobe mais ainda
-                        "max-[820px]:bottom-4"
-                    )}
+                    className={cn("bottom-6 text-[#D4AF37]", "max-[820px]:bottom-4")}
                 />
             </Section>
         </div>

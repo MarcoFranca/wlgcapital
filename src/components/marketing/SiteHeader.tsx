@@ -6,70 +6,74 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+const WHATSAPP_URL =
+    "https://wa.me/5521969639576?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20WLG%20Capital%20e%20gostaria%20de%20entender%20melhor%20sobre%20cons%C3%B3rcio.";
+
 export function SiteHeader() {
     return (
         <header
             className={cn(
-                "fixed top-0 left-0 z-50 w-full backdrop-blur-md",
-                "border-b border-border/50 bg-background/80",
-                "dark:border-white/10 dark:bg-slate-950/60"
+                "fixed left-0 top-0 z-50 w-full backdrop-blur-xl",
+                "border-b border-[rgba(212,175,55,0.18)]",
+                "bg-[#0B1420]/86"
             )}
         >
             <motion.nav
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 md:py-4"
+                className="mx-auto flex max-w-7xl items-center justify-between px-5 py-3 md:px-6 md:py-4"
             >
-                <Link href="/" className="flex items-center gap-2">
+                <Link href="/" className="flex items-center gap-3">
                     <Image
                         src="/incone_WLG.png"
-                        alt="Autentika Corretora"
-                        width={32}
-                        height={32}
-                        className="h-8 w-8"
+                        alt="WLG Capital"
+                        width={40}
+                        height={40}
+                        className="h-9 w-9 object-contain"
+                        priority
                     />
-                    <Image
-                        src="/icone_horizontal.png"
-                        alt="Autentika Corretora"
-                        width={80}
-                        height={12}
-                    />
+
+                    <div className="hidden leading-none sm:block">
+                        <p className="font-heading text-[1.15rem] uppercase tracking-[0.28em] text-[#E7E0D1]">
+                            WLG Capital
+                        </p>
+                        <p className="mt-1 text-[0.62rem] uppercase tracking-[0.34em] text-[#D4AF37]">
+                            Consórcios inteligentes
+                        </p>
+                    </div>
                 </Link>
 
-                <div className={cn("hidden md:flex items-center gap-6 text-sm text-muted-foreground", "dark:text-slate-300")}>
-                    <Link href="#como-funciona" className="hover:text-foreground dark:hover:text-white">
+                <div className="hidden items-center gap-7 text-sm text-[#E7E0D1]/72 md:flex">
+                    <Link
+                        href="#como-funciona"
+                        className="transition hover:text-[#D4AF37]"
+                    >
                         Como funciona
                     </Link>
-                    <Link href="#beneficios" className="hover:text-foreground dark:hover:text-white">
+                    <Link href="#beneficios" className="transition hover:text-[#D4AF37]">
                         Benefícios
                     </Link>
-                    <Link href="#guia" className="hover:text-foreground dark:hover:text-white">
+                    <Link href="#guia" className="transition hover:text-[#D4AF37]">
                         Guia
                     </Link>
-                    <Link href="#diagnostico" className="hover:text-foreground dark:hover:text-white">
+                    <Link href="#diagnostico" className="transition hover:text-[#D4AF37]">
                         Diagnóstico
                     </Link>
                 </div>
 
                 <div className="flex items-center gap-3">
-                    <Link href="https://wa.me/5521969639576" target="_blank" rel="noopener noreferrer">
-                        <Button
-                            variant="ghost"
-                            className={cn(
-                                "text-emerald-700 hover:text-emerald-800 hover:bg-emerald-50",
-                                "dark:text-slate-100 dark:hover:text-white dark:hover:bg-white/10"
-                            )}
-                        >
-                            WhatsApp
-                        </Button>
-                    </Link>
                     <Button
-                        size="sm"
-                        onClick={() => window.open("/login", "_self")}
-                        className="bg-emerald-500 text-black hover:bg-emerald-400"
+                        asChild
+                        className={cn(
+                            "rounded-full bg-[#D4AF37] px-5 text-[#0B1420]",
+                            "hover:bg-[#C69A2F]",
+                            "shadow-[0_14px_40px_rgba(212,175,55,0.16)]"
+                        )}
                     >
-                        Entrar
+                        <Link href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                            WhatsApp
+                        </Link>
                     </Button>
                 </div>
             </motion.nav>
