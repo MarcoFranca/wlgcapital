@@ -61,6 +61,14 @@ export function Benefits() {
             {/* Transição superior com profundidade */}
             <div
                 aria-hidden
+                className="pointer-events-none absolute inset-x-0 -top-24 z-[1] h-32"
+                style={{
+                    background:
+                        "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 45%, #0B1420 100%)",
+                }}
+            />
+            <div
+                aria-hidden
                 className="pointer-events-none absolute inset-x-0 -top-32 z-0 h-56 bg-[linear-gradient(to_bottom,rgba(11,20,32,0),rgba(11,20,32,0.82)_46%,#0B1420_100%)]"
             />
 
@@ -79,7 +87,7 @@ export function Benefits() {
                 variants={container}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.35, margin: "-80px" }}
+                viewport={{once: true, amount: 0.35, margin: "-80px"}}
             >
                 <motion.p
                     variants={item}
@@ -97,7 +105,7 @@ export function Benefits() {
                     )}
                 >
                     Consórcio com estratégia,
-                    <br className="hidden sm:block" /> não com improviso.
+                    <br className="hidden sm:block"/> não com improviso.
                 </motion.h2>
 
                 <motion.div
@@ -119,7 +127,7 @@ export function Benefits() {
                 variants={container}
                 initial="hidden"
                 whileInView="show"
-                viewport={{ once: true, amount: 0.2, margin: "-60px" }}
+                viewport={{once: true, amount: 0.2, margin: "-60px"}}
                 role="list"
             >
                 {items.map((it) => (
@@ -152,7 +160,7 @@ export function Benefits() {
                                         "text-[#D4AF37]"
                                     )}
                                 >
-                                    <it.icon className="h-5 w-5" />
+                                    <it.icon className="h-5 w-5"/>
                                 </div>
 
                                 <CardTitle className="text-base font-semibold leading-snug text-[#F5EFE3]">
@@ -169,6 +177,15 @@ export function Benefits() {
                     </motion.div>
                 ))}
             </motion.div>
+            {/* Fade de transição da sessão anterior */}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 -bottom-16 z-[1] h-32"
+                style={{
+                    background:
+                        "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 45%, #0B1420 100%)",
+                }}
+            />
         </Section>
     );
 }

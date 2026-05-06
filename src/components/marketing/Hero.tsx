@@ -52,13 +52,21 @@ export function Hero() {
 
                 <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(11,20,32,0.30),rgba(11,20,32,0.82))]" />
             </div>
-
+             {/*Fade de transição da sessão anterior*/}
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-0 z-[1] h-32"
+                style={{
+                    background:
+                        "linear-gradient(to top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 45%, #0B1420 100%)",
+                }}
+            />
             {/* Glow dourado */}
             <motion.div
                 aria-hidden
                 className={cn(
                     "absolute inset-0 z-[1]",
-                    "bg-[radial-gradient(70%_50%_at_50%_0%,rgba(212,175,55,0.11),rgba(212,175,55,0.035)_36%,transparent_72%)]"
+                    "bg-[radial-gradient(70%_50%_at_50%_0%,rgba(212,175,55,0.25),rgba(212,175,55,0.035)_36%,transparent_72%)]"
                 )}
                 animate={
                     reduce ? {} : { opacity: [0.62, 0.9, 0.62], scale: [1, 1.018, 1] }
